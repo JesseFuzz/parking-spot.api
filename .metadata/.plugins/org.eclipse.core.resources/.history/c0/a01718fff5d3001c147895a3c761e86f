@@ -1,0 +1,53 @@
+package com.api.parkingcontrol.model;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TB_PARKING_SPOT")
+public class ParkingSpotModel implements Serializable{ // Serializable converte os objetos java pra conseguir salvar os treco no banco de dados
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private UUID id;
+	
+	@Column
+	private String parkingSpotNumber;
+	
+	@Column
+	private String licensePlateCar;
+	
+	@Column
+	private String brandCar;
+	
+	@Column
+	private String modelCar;
+	
+	@Column
+	private String colorCar;
+	
+	@Column
+	private LocalDateTime registrationDate;
+	
+	@Column
+	private String responsibleName;
+	
+	@Column
+	private String apartment;
+	
+	@Column
+	private String block;
+
+}

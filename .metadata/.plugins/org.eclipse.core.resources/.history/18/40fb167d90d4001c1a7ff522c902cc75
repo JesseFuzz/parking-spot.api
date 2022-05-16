@@ -1,0 +1,22 @@
+package com.api.parkingcontrol.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api.parkingcontrol.repository.ParkingSpotRepository;
+
+@Service
+public class ParkingSpotService {
+	
+	//@Autowired
+	//ParkingSpotRepository parkingRepository; //uso o autowired para que eu possa criar uma variável do meu repositório nessa classe e para que eu diga para o spring que em alguns momentos ele terá que injetar algumas dependencias dentro do repository nessa classe
+	
+	//usarei um construtor para fazer isso:
+	
+	private ParkingSpotRepository parkingRepository;
+	
+	public ParkingSpotService(ParkingSpotRepository parkingRepository) {
+		this.parkingSpotRepository = parkingRepository;
+	}
+	
+}
