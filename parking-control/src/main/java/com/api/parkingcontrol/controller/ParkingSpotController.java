@@ -35,11 +35,21 @@ public class ParkingSpotController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
-		var parkingSpotModel = new ParkingSpotModel();
-		BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
-		parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-		return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
+	public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){ //@Valid por conta do @NotBlank do DTO e o @RequestBody é porq receberá um Json
+		
+		if(parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())){
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
+		}
+		if(parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())){
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
+		}
+		if(parkingSpotService.existsByApartmentAndBlock(parkingSpotDto.getApartment(), parkingSpotDto.getBlock())){
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
+		}
+		var parkingSpotModel = new ParkingSpotModel(); //uma instância (usando var) de SpotModel a ser convertida 
+		BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel); //converte o SpotDTO em SpotModel
+		parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));//seta a data de registro que ta no controller, não no DTO
+		return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));//retorna o status http e no body o método save do Service com o SpotModel de parâmetro
 		
 	}
 	
