@@ -1,7 +1,0 @@
-package com.api.parkingcontrol.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ParkingSpotRepository extends JpaRepository<id, UUID>{
-
-}

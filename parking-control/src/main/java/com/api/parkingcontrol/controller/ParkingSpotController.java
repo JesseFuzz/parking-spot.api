@@ -2,13 +2,20 @@ package com.api.parkingcontrol.controller;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
+import javax.persistence.Id;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +60,28 @@ public class ParkingSpotController {
 		
 	}
 	
+	@GetMapping
+	public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpots(){
+		return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll()); //ñ passei msg  no body pois caso não tenha irá retornar uma lista vazia
+	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> getOneParkingSpot(@PathVariable(value="id") UUID id){ //usei ResponseEntity<Object> ao invés de List prq caso n exista esse registro do ID ele vai retornar que não existe esse objeto
+		Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+ 		if(!parkingSpotModelOptional.isPresent()) { //a exclamação significa NÃO "se parkingSpotModelOptional não estiver presente retorne..."
+ 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("A vaga não foi achada!");
+ 		}
+		return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+	}
 	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value="id")UUID id){
+		Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
+ 		if(!parkingSpotModelOptional.isPresent()) { //a exclamação significa NÃO "se parkingSpotModelOptional não estiver presente retorne..."
+ 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("A vaga não foi achada!");
+ 		}
+ 		parkingSpotService.delete(parkingSpotModelOptional.get());
+		return ResponseEntity.status(HttpStatus.OK).body("essa vaga foi deletada com sucesso" );
+	}
+		
 }

@@ -1,5 +1,0 @@
-package com.api.parkingcontrol.dto;
-
-public class ParkingSpotDto {
-
-}
