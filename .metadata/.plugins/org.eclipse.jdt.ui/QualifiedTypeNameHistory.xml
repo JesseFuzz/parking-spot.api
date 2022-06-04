@@ -24,7 +24,6 @@
     <fullyQualifiedTypeName name="com.api.parkingcontrol.dto.ParkingSpotDto"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.beans.BeanUtils"/>
-    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.time.ZoneId"/>
     <fullyQualifiedTypeName name="com.api.parkingcontrol.model.ParkingSpotModel"/>
     <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
@@ -37,4 +36,19 @@
     <fullyQualifiedTypeName name="java.util.UUID"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Primary"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.datatype.jsr310.JavaTimeModule"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Sort"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Sort.Direction"/>
+    <fullyQualifiedTypeName name="org.springframework.data.web.PageableDefault"/>
+    <fullyQualifiedTypeName name="java.awt.print.Pageable"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
 </qualifiedTypeNameHistroy>

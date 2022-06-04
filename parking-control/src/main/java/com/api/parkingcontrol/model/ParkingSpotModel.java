@@ -133,6 +133,11 @@ public class ParkingSpotModel implements Serializable{ // Serializable converte 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public ParkingSpotModel get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

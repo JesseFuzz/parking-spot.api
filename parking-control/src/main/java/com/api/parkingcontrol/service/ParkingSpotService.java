@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -44,8 +46,8 @@ public class ParkingSpotService {
 		return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
 	}
 
-	public List<ParkingSpotModel> findAll() {
-		return parkingSpotRepository.findAll();
+	public Page<ParkingSpotModel> findAll(Pageable pageable) {
+		return parkingSpotRepository.findAll(pageable);
 	}
 
 	public java.util.Optional<ParkingSpotModel> findById(UUID id) {
