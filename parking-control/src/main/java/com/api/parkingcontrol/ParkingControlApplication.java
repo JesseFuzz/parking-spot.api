@@ -20,3 +20,4 @@ public class ParkingControlApplication {
 	}
 
 }
+//implementar histórico de alterações e um getbyplatecar

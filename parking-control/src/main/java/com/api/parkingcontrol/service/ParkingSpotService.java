@@ -57,6 +57,10 @@ public class ParkingSpotService {
 	public void delete(ParkingSpotModel parkingSpotModel) {
 		parkingSpotRepository.delete(parkingSpotModel);
 	}
+
+	public java.util.Optional<ParkingSpotModel> findByLicensePlateCar(String licensePlateCar) {
+		return parkingSpotRepository.findByLicensePlateCar(licensePlateCar);
+	}
 	
 	//public void getById() {
 		//return parkingSpotRepository.findById(@RequestBody UUID id);

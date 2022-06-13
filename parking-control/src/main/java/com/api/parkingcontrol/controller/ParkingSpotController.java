@@ -79,6 +79,12 @@ public class ParkingSpotController {
 		return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
 	}
 	
+	@GetMapping("/plate/{licensePlateCar}")
+	public ResponseEntity<Object> getLicensePlateCar(@PathVariable String licensePlateCar){
+		Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findByLicensePlateCar(licensePlateCar);
+		return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value="id")UUID id){
 		Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
