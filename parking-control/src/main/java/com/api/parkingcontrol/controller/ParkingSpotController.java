@@ -98,7 +98,7 @@ public class ParkingSpotController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateParkingSpot(@PathVariable(value="id") UUID id, @RequestBody @Valid ParkingSpotDto parkingSpotDto){
 		Optional<ParkingSpotModel> parkingSpotOptional = parkingSpotService.findById(id);
-		Optional<ParkingSpotModel> parkingSpotModelOptional = null; //eu que coloquei o de cima foi Michelli e o null foi pra inicializar (ide sugeriu inicializar)
+		//Optional<ParkingSpotModel> parkingSpotModelOptional = null; //eu que coloquei o de cima foi Michelli e o null foi pra inicializar (ide sugeriu inicializar)
 		if(!parkingSpotModelOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("essa vaga não foi encontrada!");
 		}
